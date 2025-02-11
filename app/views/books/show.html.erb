@@ -1,0 +1,27 @@
+<div class="max-w-3xl mx-auto mt-3 mb-3 p-6 bg-white shadow-lg rounded-lg">
+  <h1 class="font-bold text-3xl text-gray-800 mb-4"><%= @book.title %></h1>
+  <p class="text-lg text-gray-600 mb-2"><strong>Author:</strong> <%= @book.author %></p>
+  <p class="text-lg text-gray-600 mb-2"><strong>ISBN:</strong> <%= @book.isbn %></p>
+
+  <% if @book.borrowed? %>
+    <p class="text-red-500 font-semibold">Status: Not Available</p>
+  <% else %>
+    <p class="text-green-500 font-semibold">Status: Available</p>
+  <% end %>
+
+  <div class="mt-4">
+    <% if current_user.present? %>
+      <% if @book.borrowed? %>
+        <button class="bg-gray-400 text-white px-6 py-2 rounded cursor-not-allowed" disabled>Borrowed</button>
+      <% else %>
+        <%= button_to "Borrow", borrowings_path(book_id: @book.id), method: :post, class: "cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded" %>
+      <% end %>
+    <% else %>
+      <button class="bg-gray-400 text-white px-6 py-2 rounded cursor-not-allowed" disabled>Login to Borrow</button>
+    <% end %>
+  </div>
+
+  <div class="mt-6">
+    <%= link_to "Back to Books", books_path, class: "text-blue-600 hover:underline" %>
+  </div>
+</div>
