@@ -123,6 +123,20 @@ Visit the live application here: [Book Lending System](https://book-lending-syst
 ## Repository
 [GitHub Repository](https://github.com/kevykibbz/book-lending-lsystem)
 
+## UIs
+
+### Dashboard
+ ![Dashboard](/public/dashboard.png)
+
+### Sign up page
+ ![sign up page](/public/signup.png)
+
+### Sign in page
+ ![sign in page](/public/login.png)
+
+### Profile page
+ ![Profile page](/public/borrow.png)
+ 
 ---
 
 🚀 **Happy Coding!**
