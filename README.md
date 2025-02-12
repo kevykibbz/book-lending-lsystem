@@ -45,8 +45,8 @@ Ensure you have the following installed:
 ### Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-username/book_library_app.git
-   cd book_library_app
+   git clone https://github.com/kevykibbz/book-lending-lsystem.git
+   cd book-lending-lsystem
    ```
 2. Install dependencies:
    ```sh
@@ -79,20 +79,44 @@ rails test test/controllers/borrowings_controller_test.rb
 
 ## Deployment
 
-To deploy on **Heroku**:
-1. Install Heroku CLI and log in:
-   ```sh
-   heroku login
-   ```
-2. Create a Heroku app:
-   ```sh
-   heroku create book-library-app
-   ```
-3. Deploy to Heroku:
-   ```sh
-   git push heroku main
-   heroku run rails db:migrate
-   ```
+To deploy on **Render**, follow these steps:
+
+### 1. Create a Render Account
+Sign up at [Render](https://render.com/) if you haven't already.
+
+### 2. Add the Repository
+- Go to the [Render Dashboard](https://dashboard.render.com/).
+- Click **New Web Service**.
+- Connect your GitHub repository.
+
+### 3. Configure the Service
+- Choose the **Ruby** runtime.
+- Set the build command:  
+  ```sh
+  ./bin/render-build.sh
+  ```
+### 4. Set the Start Command
+```bash
+bundle exec rails server
+```
+### 5. Set Environment Variables
+- **DATABASE_URL**: Linked to the database in Render.
+- **RAILS_MASTER_KEY**: Copy from config/master.key.
+
+### 6. Database Setup
+- Add a PostgreSQL database under Render Databases.
+- Use the database connection string for DATABASE_URL.
+
+### 7. Trigger the First Deployment
+- Click Deploy.
+After deployment, manually run:
+```bash
+bundle exec rails db:migrate
+```
+Your Rails app should now be live on Render! 🚀
+
+
+
 
 ## Repository
 [GitHub Repository](https://github.com/kevykibbz/book-lending-lsystem)
